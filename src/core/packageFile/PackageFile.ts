@@ -1,13 +1,16 @@
 import { PackageJson } from "../../types/packageType";
 import { isFileExists, writeFile } from "../../utils/fsUtils";
+import { getDependencies } from "../../utils/getDependencies";
 import { posixJoinUtils } from "../../utils/pathUtils";
 import { ErrorToast, SuccessToast } from "../../utils/toast";
 import chalk from "chalk";
 
 class PackageFile {
   packageFile: PackageJson;
+  ShouldInstallDependencies: string[];
   constructor(packageJson: PackageJson) {
     this.packageFile = packageJson;
+    this.ShouldInstallDependencies = [];
   }
   runDoctor() {
     //检查一下有没有安装git环境;
@@ -44,6 +47,19 @@ class PackageFile {
       );
     }
   }
-  scanDependencies() {}
+  scanDependencies() {
+    this.ShouldInstallDependencies = getDependencies([
+      "cz-customizable",
+      "commitlint-config-gitmoji",
+      "husky",
+    ]);
+    if (this.ShouldInstallDependencies.length === 0) {
+      this.installDependencies();
+    } else {
+      this.writeConfig();
+    }
+  }
+  installDependencies() {}
+  writeConfig() {}
 }
 export { PackageFile };

@@ -3,4 +3,7 @@ import path from "path";
 function posixJoinUtils(...pth: string[]) {
   return path.posix.join(...pth);
 }
-export { posixJoinUtils };
+function posixGetBasename(pth: string): string {
+  return path.posix.basename(pth);
+}
+export { posixJoinUtils, posixGetBasename };

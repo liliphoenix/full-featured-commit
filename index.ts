@@ -10,6 +10,7 @@ function execute() {
 
   const packageFile = new PackageFile(packageJson);
   packageFile.runDoctor();
+  packageFile.scanDependencies();
 }
 function main() {
   execute();
