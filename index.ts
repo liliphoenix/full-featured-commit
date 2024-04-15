@@ -9,8 +9,8 @@ function execute() {
   );
 
   const packageFile = new PackageFile(packageJson);
-  packageFile.runDoctor();
-  packageFile.scanDependencies();
+  packageFile.runDoctor("base");
+  packageFile.addScript();
 }
 function main() {
   execute();

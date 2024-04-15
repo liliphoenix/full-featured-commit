@@ -20,7 +20,7 @@ function isFileExists(path: string): Boolean {
 function writeFile(path: string, data: string) {
   try {
     fs.writeFile(path, data, () => {});
-    SuccessToast("write file success!");
+    SuccessToast("Write file success!");
   } catch (error) {}
 }
 export { readJsonFile, isFileExists, writeFile };

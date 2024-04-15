@@ -17,7 +17,6 @@ function getDependencies(arr: string[]) {
     });
     return flag;
   });
-  console.log(filterDependencies);
   return filterDependencies;
 }
 export { getDependencies };
